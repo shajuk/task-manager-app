@@ -1,0 +1,26 @@
+server:
+  port: 8080
+#  ssl:
+#    enabled: true
+#    key-store: classpath:keystore/task-manager.jks
+#    key-store-password: changeit
+#    key-alias: task-manager
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/taskdb
+#   url: jdbc:mysql://localhost:3306/taskdb?useSSL=false&allowPublicKeyRetrieval=true
+    username: taskuser
+    password: taskpass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+jwt:
+  secret: kP7xA9uQm4VtZ2sD1nF8gR5yT3wB6cH0LjE2vK9pS8dQ4rU1oM7hN5fW3yX6bJ2
+  validity-ms: 3600000 # 1 hour
+
+logging:
+  level:
+    org.springframework.security: INFO
