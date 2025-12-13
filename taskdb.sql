@@ -30,9 +30,9 @@ CREATE TABLE `user_roles` (
 );
 
 -- 5) Tasks table
-DROP TABLE IF EXISTS `tasks`;
+DROP TABLE IF EXISTS `task`;
 
-CREATE TABLE `tasks` (
+CREATE TABLE `task` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `description` TEXT,

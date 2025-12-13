@@ -31,19 +31,19 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskResponse> get(@PathVariable Long id) {
+    public ResponseEntity<TaskResponse> get(@PathVariable("id") Long id) {
         Task t = taskService.findById(id).orElseThrow(() -> new IllegalArgumentException("Not found"));
         return ResponseEntity.ok(toDto(t));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskResponse> update(@PathVariable Long id, @Valid @RequestBody TaskRequest request) {
+    public ResponseEntity<TaskResponse> update(@PathVariable("id") Long id, @Valid @RequestBody TaskRequest request) {
         Task t = taskService.update(id, request);
         return ResponseEntity.ok(toDto(t));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         taskService.delete(id);
         return ResponseEntity.noContent().build();
     }
