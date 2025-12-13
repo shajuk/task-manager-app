@@ -8,4 +8,6 @@ public class TaskRequest {
     @NotBlank
     private String title;
     private String description;
+    private String assignedTo;
+    private String status;
 }

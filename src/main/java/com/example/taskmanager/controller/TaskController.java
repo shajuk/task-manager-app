@@ -53,6 +53,8 @@ public class TaskController {
         r.setId(t.getId());
         r.setTitle(t.getTitle());
         r.setDescription(t.getDescription());
+        r.setAssignedTo(t.getAssignedTo());
+        r.setStatus(t.getStatus());
         r.setCompleted(t.isCompleted());
         r.setCreatedAt(t.getCreatedAt());
         r.setUpdatedAt(t.getUpdatedAt());

@@ -19,6 +19,8 @@ public class TaskServiceImpl implements TaskService {
         Task t = Task.builder()
                 .title(request.getTitle())
                 .description(request.getDescription())
+                .assignedTo(request.getAssignedTo())
+                .status(request.getStatus())
                 .completed(false)
                 .build();
         return taskRepository.save(t);
@@ -39,6 +41,8 @@ public class TaskServiceImpl implements TaskService {
         Task task = taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Task not found"));
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
+        task.setAssignedTo(request.getAssignedTo());
+        task.setStatus(request.getStatus());
         return taskRepository.save(task);
     }
 

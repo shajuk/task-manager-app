@@ -21,6 +21,10 @@ public class Task {
 
     private String description;
 
+    private String assignedTo;
+
+    private String status;
+
     private boolean completed = false;
 
     private Instant createdAt;
