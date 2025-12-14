@@ -57,7 +57,8 @@ public class TaskController {
     public ResponseEntity<List<TaskResponse>> list(
             @Parameter(description = "Page number (0-indexed)") @RequestParam(name="page", defaultValue = "0") int page,
             @Parameter(description = "Page size") @RequestParam(name="size", defaultValue = "10") int size,
-            @Parameter(description = "Field to sort by") @RequestParam(name = "sortBy", defaultValue = "id") String sortBy,
+            @Parameter(description = "Field to sort by (valid values: id, title, description, status, createdAt, updatedAt)") 
+                @RequestParam(name = "sortBy", defaultValue = "id") String sortBy,
             @Parameter(description = "Sort direction (ASC or DESC)") @RequestParam(name = "direction", defaultValue = "ASC") String direction) {
 
         PageRequest pageRequest = PageRequest.of(page, size,

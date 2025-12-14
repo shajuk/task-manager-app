@@ -31,7 +31,7 @@ public class UserRequest {
     private String username;
 
     @Schema(description = "Password (must contain at least one lowercase, uppercase, digit, and special character)", 
-            example = "Password123!", required = true)
+            example = "MySecureP@ss1", required = true)
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters long")
     @Pattern(

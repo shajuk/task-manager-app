@@ -15,7 +15,7 @@ public class TokenRequest {
     @Size(min = 5, max = 20, message = "Username must be between 5 and 20 characters")
     private String username;
 
-    @Schema(description = "Password of the user", example = "Password123!", required = true)
+    @Schema(description = "Password of the user", example = "SecureP@ssw0rd", required = true)
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters long")
     @Pattern(
