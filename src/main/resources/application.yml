@@ -21,6 +21,13 @@ jwt:
   secret: kP7xA9uQm4VtZ2sD1nF8gR5yT3wB6cH0LjE2vK9pS8dQ4rU1oM7hN5fW3yX6bJ2
   validity-ms: 3600000 # 1 hour
 
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
 logging:
   file:
     name: ./logs/task-manager-app.log
