@@ -28,9 +28,7 @@ public class TaskController {
     @PostMapping
     public ResponseEntity<TaskResponse> create(@Valid @RequestBody TaskRequest request) {
         Task task = taskService.create(request);
-        TaskResponse response=mapEntityToDTO(task);
-        response.setAssignedTo(task.getAssignedTo().getUsername());
-        return ResponseEntity.status(201).body(response);
+        return ResponseEntity.status(201).body(mapEntityToDTO(task));
     }
 
     @GetMapping
@@ -62,9 +60,7 @@ public class TaskController {
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> update(@PathVariable("id") Long id, @Valid @RequestBody TaskRequest request) {
         Task task = taskService.update(id, request);
-        TaskResponse response=mapEntityToDTO(task);
-        response.setAssignedTo(task.getAssignedTo().getUsername());
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(mapEntityToDTO(task));
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -75,6 +71,8 @@ public class TaskController {
     }
 
     private TaskResponse mapEntityToDTO(Task task) {
-        return modelMapper.map(task, TaskResponse.class);
+        TaskResponse response=modelMapper.map(task, TaskResponse.class);
+        response.setAssignedTo(task.getAssignedTo().getUsername());
+        return response;
     }
 }
