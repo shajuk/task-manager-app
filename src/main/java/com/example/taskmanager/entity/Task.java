@@ -11,6 +11,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "Tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,9 @@ public class Task {
 
     private String description;
 
-    private String assignedTo;
+    @ManyToOne
+    @JoinColumn(name = "assigned_to", referencedColumnName = "username")
+    private User assignedTo;
 
     private String status;
 

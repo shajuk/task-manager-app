@@ -1,6 +1,6 @@
 package com.example.taskmanager.security;
 
-import com.example.taskmanager.config.CustomUserDetailsService;
+import com.example.taskmanager.service.CustomUserDetailsService;
 import com.example.taskmanager.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

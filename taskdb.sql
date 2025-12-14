@@ -16,8 +16,12 @@ CREATE TABLE `users` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
+  `firstname` VARCHAR(100) NOT NULL,
+  `lastname` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ux_users_username` (`username`)
+  UNIQUE KEY `ux_users_username` (`username`),
+  UNIQUE KEY `ux_users_email` (`email`)
 );
 
 -- 4) Roles table as element collection (many simple roles per user)
@@ -30,9 +34,9 @@ CREATE TABLE `user_roles` (
 );
 
 -- 5) Tasks table
-DROP TABLE IF EXISTS `task`;
+DROP TABLE IF EXISTS `tasks`;
 
-CREATE TABLE `task` (
+CREATE TABLE `tasks` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `description` TEXT,
@@ -42,5 +46,7 @@ CREATE TABLE `task` (
   `created_at` DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `updated_at` DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`),
-  KEY `idx_tasks_created_at` (`created_at`)
+  KEY `idx_tasks_created_at` (`created_at`),
+  CONSTRAINT `fk_tasks_users` FOREIGN KEY (`assigned_to`)
+    REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
 );

@@ -22,5 +22,12 @@ jwt:
   validity-ms: 3600000 # 1 hour
 
 logging:
+  file:
+    name: ./logs/task-manager-app.log
   level:
-    org.springframework.security: INFO
+    root: INFO
+    org.springframework: WARN
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
